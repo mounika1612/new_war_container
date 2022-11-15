@@ -1,5 +1,5 @@
 
-FROM tomcat
-EXPOSE 8090
-COPY /home/ec2-user/new_war_container/target/hello-world-0.0.1-SNAPSHOT.war /usr/local/tomcat9/webapps/
-CMD [ "sh", "-c", "service ssh start; bash"]
+FROM openjdk:8-jdk-alpine
+COPY /target/hello-world-0.0.1-SNAPSHOT.war /Hello-world-0.0.1-SNAPSHOT.war
+EXPOSE 9999
+ENTRYPOINT ["java","-jar","Hello-world-0.0.1-SNAPSHOT.war"]
